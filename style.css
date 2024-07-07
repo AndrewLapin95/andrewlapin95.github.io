@@ -1,0 +1,57 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.wrapper {
+    position: relative;
+    padding-top: 40px;
+}
+
+.title {
+    text-align: center;
+    margin: 0 0 150px 0;
+}
+
+.buttons {
+    position: absolute;
+    bottom: -40px;
+    left: 10px;
+}
+
+.buttons button {
+    margin: -2px;
+}
+
+.scenes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scene {
+    display: none;
+}
+
+.current {
+    display: block;
+}
+
+svg {
+    margin-bottom: 20px;
+}
+
+.tooltip {
+    pointer-events: none;
+    transition: opacity 200ms;
+    position: absolute;
+    padding: 10px;
+    background: rgb(255, 255, 255);
+    border: 0.5px solid black;
+    border-radius: 2px;
+    opacity: 0;
+}
