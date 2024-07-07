@@ -141,7 +141,7 @@ function firstScene(data) {
         .attr('stroke-width', 3)
         .attr('d', d3.line().x(d => x(d.cylinders) + barWidth).y(d => y(d.avgMPG)))
         .on('mouseover', function(event) {
-            displayTooltip(`Cars with fewer cylinders generally have higher fuel efficiency.`, event);
+            displayTooltip(`As is evident from the trend line, cars with fewer cylinders generally have higher fuel efficiency.`, event);
         })
         .on('mouseout', function() {
             removeTooltip();
