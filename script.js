@@ -211,7 +211,15 @@ function secondScene(data) {
         .attr('r', 3.5)
         .attr('opacity', 0.65)
         .on('mouseover', function(event, d) {
-            displayTooltip(`Fuel type: ${d.Fuel} - Highway MPG: ${d.AverageHighwayMPG}, City MPG: ${d.AverageCityMPG}`, event);
+            if (d.Fuel === 'Electricity') {
+                displayTooltip(`Electric cars consume the least fuel on average: ${d.AverageHighwayMPG} highway MPG and ${d.AverageCityMPG} city MPG.`, event);
+            }
+            else if (d.Fuel === 'Gasoline') {
+                displayTooltip(`Gasoline engines are generally the least fuel-efficient: ${d.AverageHighwayMPG} highway MPG and ${d.AverageCityMPG} city MPG.`, event);
+            }
+            else if (d.Fuel === 'Diesel') {
+                displayTooltip(`Diesel cars are generally more fuel-efficient compared to the gasoline ones : ${d.AverageHighwayMPG} highway MPG and ${d.AverageCityMPG} city MPG.`, event);
+            }
         })
         .on('mouseout', function() {
             removeTooltip();
@@ -247,10 +255,10 @@ function thirdScene(data) {
         .attr('transform', 'translate(0,380)');
 
     svg.append('text')
-        .text('Point at the bars for more info.')
+        .text('Brands are sorted descendingly from top to bottom by fuel-efficiency. Point at the bars for more info.')
         .style('font-size', '12px')
         .style('font-style', 'italic')
-        .attr('x', 450);
+        .attr('x', 10);
 
     svg.append('text')
         .text('Mean Highway MPG')
@@ -269,7 +277,7 @@ function thirdScene(data) {
         .attr('width', d => x(d.avgMPG))
         .attr('height', y.bandwidth())
         .on('mouseover', function(event, d) {
-            displayTooltip(`Brand: ${d.brand} - Mean Highway MPG: ${d.avgMPG}`, event);
+            displayTooltip(`Brand: ${d.brand}, mean highway MPG: ${d.avgMPG}`, event);
             d3.select(this)
               .attr('fill', '#1560bd');
         })
